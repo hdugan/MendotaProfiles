@@ -100,34 +100,33 @@ df9 = read_csv('Data/Tran_combined.profiles.2.csv') |>
   mutate(dosat = 100*do/o2.at.sat.base(temp)) |> 
   select(date, depth, temp, do, dosat, spc, name)
 
+####### Compile data #######
+df.clean = df1 |> 
+  bind_rows(df2) |> 
+  bind_rows(df3) |> 
+  bind_rows(df4) |> 
+  bind_rows(df5) |> 
+  bind_rows(df6) |> 
+  bind_rows(df7) |> 
+  bind_rows(df8) |> 
+  bind_rows(df9)
 
-ggplot(df1) +
-  geom_point(aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df2, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df3, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df4, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df5, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df6, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df7, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df8, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
-  geom_point(data = df9, aes(x = date, y = depth, fill = temp), shape = 21, stroke = 0.2) +
+####### Compile data #######
+ggplot(df.clean) +
+  geom_point(aes(x = date, y = depth, color = temp)) +
   scale_y_reverse() +
   xlim(as.Date('2010-01-01'), NA) +
-  scale_fill_gradientn(colors=rev(met.brewer("OKeeffe1"))) +
+  scale_color_gradientn(colors=rev(met.brewer("OKeeffe1"))) +
+  theme_bw(base_size = 9)
+
+ggplot(df.clean |> 
+         mutate(dosat = if_else(dosat > 120, 120, dosat)) |> 
+         filter(!is.na(dosat))) +
+  geom_point(aes(x = date, y = depth, color = dosat)) +
+  scale_y_reverse() +
+  xlim(as.Date('2000-01-01'), NA) +
+  scale_color_gradientn(colors=met.brewer("OKeeffe1"), na.value = 'none') +
   theme_bw(base_size = 9)
 
 
-ggplot(df1) +
-  geom_point(aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df2, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df3, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df4, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df5, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df7, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df8, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  geom_point(data = df9, aes(x = date, y = depth, color = dosat), stroke = 0.2) +
-  scale_y_reverse() +
-  xlim(as.Date('2010-01-01'), NA) +
-  scale_color_gradientn(colors=(met.brewer("OKeeffe1"))) +
-  theme_bw(base_size = 9)
   
