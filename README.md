@@ -4,8 +4,8 @@ Gathering disparate Lake Mendota profiles
 # Published data sources
 
 ## Temp
-O’Reilly, B., K. Hietpas, and P.J. Block. 2022. Spatially Distributed Lake Mendota EXO Multi-Parameter Sonde Measurements Summer 2019 ver 2. Environmental Data Initiative. https://doi.org/10.6073/pasta/b313ba0edc60f448c87124ef88dcaf26 (Accessed 2022-12-28).
-WSSR_MendotaSamplingDataCompiled.csv
+~~O’Reilly, B., K. Hietpas, and P.J. Block. 2022. Spatially Distributed Lake Mendota EXO Multi-Parameter Sonde Measurements Summer 2019 ver 2. Environmental Data Initiative. https://doi.org/10.6073/pasta/b313ba0edc60f448c87124ef88dcaf26 (Accessed 2022-12-28).
+WSSR_MendotaSamplingDataCompiled.csv~~
 
 Rohwer, R.R. and K.D. McMahon. 2022. Lake Mendota Microbial Observatory Temperature, Dissolved Oxygen, pH, and conductivity data, 2006-present. ver 3. Environmental Data Initiative. https://doi.org/10.6073/pasta/9aededa7f406e2c204dc3f8249f53b9d (Accessed 2022-12-28).
 robin_MEMO_non-Poseidon_dissolved_oxygen.csv
